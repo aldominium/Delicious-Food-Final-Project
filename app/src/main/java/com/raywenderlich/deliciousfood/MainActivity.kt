@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
     if (!hasPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) ||
         !hasPermission(android.Manifest.permission.CAMERA)) {
       requestPermissions()
-    }else{
+    } else {
       try {
         camera.takePicture()
       } catch (e: Exception) {
@@ -90,17 +90,17 @@ class MainActivity : AppCompatActivity() {
     }
   }
 
-  private fun requestPermissions(){
+  private fun requestPermissions() {
     if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-            android.Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
 
-      mainLayout.snack(getString(R.string.permission_message), Snackbar.LENGTH_INDEFINITE){
-        action(getString(R.string.OK)){
+      mainLayout.snack(getString(R.string.permission_message), Snackbar.LENGTH_INDEFINITE) {
+        action(getString(R.string.OK)) {
           ActivityCompat.requestPermissions(this@MainActivity,
               arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.CAMERA), WRITE_PERMISSION_REQUEST_CODE)
         }
       }
-    }else{
+    } else {
       ActivityCompat.requestPermissions(this,
           arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.CAMERA), WRITE_PERMISSION_REQUEST_CODE)
       return
